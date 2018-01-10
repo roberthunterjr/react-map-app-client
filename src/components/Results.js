@@ -10,11 +10,19 @@ class Results extends Component {
 
   }
   render() {
-    return (
-      <div>
-        <p> Results Component </p>
-      </div>
-    )
+    if(this.props.results.length) {
+      return (
+        <div>
+          <p> Results Currently Full </p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <p> Results Currently Empty </p>
+        </div>
+      )
+    }
   }
 
 }
