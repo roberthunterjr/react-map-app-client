@@ -31,19 +31,15 @@ class App extends Component {
         </header>
         <div className="container">
           <div className="row">
-            <p className="align-center">This area is reserved for the address entry </p>
             <Search updatePlacesFn={this.updatePlaces.bind(this)}/>
           </div>
           <div className="row">
-            <div className="col-md-5">
+            <div className="col-sm-5">
               <p className="App-intro">
                 This area is reserved for the map
               </p>
             </div>
-            <div className="col-md-7">
-              <p className="App-intro">
-                This area is reserved for the search results
-              </p>
+            <div className="col-sm-7 bg-faded">
               <div>
                 <Results results={this.state.places}/>
               </div>

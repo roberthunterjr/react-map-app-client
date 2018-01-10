@@ -42,8 +42,8 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="row">
-        <form className="form-inline">
+      <div className="w-100 m-3">
+        <form className="form-inline col">
           {AddressField(1, this.changeHandle.bind(this))}
           {AddressField(2, this.changeHandle.bind(this))}
           <button
@@ -66,7 +66,7 @@ const AddressField = (id,changeHandler) => {
       <input
       id={`address-${id}`}
       type="text"
-      className="form-control form-control-lg"
+      className="form-control form-control-lg w-100"
       placeholder={ADDRESS_PLACEHOLDER}
       onChange={changeHandler}/>
     </div>
