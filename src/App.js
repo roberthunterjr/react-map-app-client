@@ -14,9 +14,9 @@ class App extends Component {
       places: []
     };
   }
-  getPlaces() {
-    return PLACES;
-  }
+  // getPlaces() {
+  //   return PLACES;
+  // }
   updatePlaces(places) {
     this.setState({
       places: places

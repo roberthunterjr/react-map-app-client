@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {PLACES} from '../dummy.js';
-
+import axios from 'axios';
 class Search extends Component {
   constructor(props){
     super(props);
@@ -34,9 +34,32 @@ class Search extends Component {
       [property]: body
     })
   }
+  encodeAddresses(){
+    const bundle = {
+      one: this.state.addressOne,
+      two: this.state.addressTwo
+    };
+    return JSON.stringify(bundle);
+  }
   getPlaces(){
-    return new Promise(function(resolve, reject) {
-      resolve(PLACES);
+    return new Promise((resolve, reject) => {
+      if(this.state.addressOne !== '' && this.state.addressTwo !== '') {
+        const params = this.encodeAddresses();
+        axios.post('http://localhost:3000/api/getPlaces', params)
+        .then((response) => {
+          if(response.status === 200){
+            console.log('this is the get response',response.data);
+            resolve(response.data);
+          } else {
+            console.log('Bad request sent')
+            reject([])
+          }
+        })
+      } else {
+        console.log('Invalid input')
+        reject([]);
+      }
+      // resolve(PLACES);
     });
   }
 
