@@ -1,0 +1,22 @@
+import React, {Component} from 'react';
+
+
+class Results extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+
+    }
+
+  }
+  render() {
+    return (
+      <div>
+        <p> Results Component </p>
+      </div>
+    )
+  }
+
+}
+
+export default Results;

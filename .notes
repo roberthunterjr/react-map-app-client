@@ -1,0 +1,12 @@
+MVP -
+
+MVP will be a single page with no navigation that does GET request
+to retrieve the proper search results
+
+Addtional features -
+
+Deploy to S3 statically
+Map with pins
+better design style
+Navigation
+Landing page
