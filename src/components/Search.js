@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {PLACES} from '../dummy.js';
 
 class Search extends Component {
   constructor(props){
@@ -11,6 +12,11 @@ class Search extends Component {
 
   clickHandle(e){
     e.preventDefault;
+    //call getPlaces then updatePlaces
+    this.getPlaces()
+    .then((places) => {
+      this.props.updatePlacesFn(places);
+    })
   }
 
   changeHandle(e){
@@ -27,6 +33,11 @@ class Search extends Component {
     this.setState({
       [property]: body
     })
+  }
+  getPlaces(){
+    return new Promise(function(resolve, reject) {
+      resolve(PLACES);
+    });
   }
 
   render() {

@@ -17,6 +17,11 @@ class App extends Component {
   getPlaces() {
     return PLACES;
   }
+  updatePlaces(places) {
+    this.setState({
+      places: places
+    })
+  }
   render() {
     return (
       <div className="App">
@@ -27,7 +32,7 @@ class App extends Component {
         <div className="container">
           <div className="row">
             <p className="align-center">This area is reserved for the address entry </p>
-            <Search />
+            <Search updatePlacesFn={this.updatePlaces.bind(this)}/>
           </div>
           <div className="row">
             <div className="col-md-5">
