@@ -11,7 +11,11 @@ class App extends Component {
     super(props);
     this.state =
     {
-      places: []
+      places: [],
+      error: {
+        code: 0,
+        message: ''
+      }
     };
   }
   // getPlaces() {
@@ -19,7 +23,20 @@ class App extends Component {
   // }
   updatePlaces(places) {
     this.setState({
-      places: places
+      places: places,
+      error: {
+        code: 0,
+        message: ''
+      }
+    })
+  }
+  handleError(code, message) {
+    console.log(message);
+    this.setState({
+      error: {
+        code,
+        message
+      }
     })
   }
   render() {
@@ -31,7 +48,9 @@ class App extends Component {
         </header>
         <div className="container">
           <div className="row">
-            <Search updatePlacesFn={this.updatePlaces.bind(this)}/>
+            <Search
+            updatePlacesFn={this.updatePlaces.bind(this)}
+            appErrorFn={this.handleError.bind(this)}/>
           </div>
           <div className="row">
             <div className="col-sm-5">
@@ -41,7 +60,9 @@ class App extends Component {
             </div>
             <div className="col-sm-7 bg-faded">
               <div>
-                <Results results={this.state.places}/>
+                <Results
+                results={this.state.places}
+                appError={this.state.error}/>
               </div>
             </div>
           </div>

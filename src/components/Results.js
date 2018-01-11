@@ -10,7 +10,13 @@ class Results extends Component {
 
   }
   render() {
-    if(this.props.results.length) {
+    if(this.props.appError.code !== 0) {
+      return (
+        <div>
+          {this.props.appError.message}
+        </div>
+      )
+    } else if(this.props.results.length) {
       const places = this.props.results;
       return (
         <div className="">

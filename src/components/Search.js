@@ -16,6 +16,8 @@ class Search extends Component {
     this.getPlaces()
     .then((places) => {
       this.props.updatePlacesFn(places);
+    },(err) => {
+      this.props.appErrorFn(err.code, err.message);
     })
   }
 
@@ -39,7 +41,7 @@ class Search extends Component {
       one: this.state.addressOne,
       two: this.state.addressTwo
     };
-    return JSON.stringify(bundle);
+    return bundle;
   }
   getPlaces(){
     return new Promise((resolve, reject) => {
@@ -50,14 +52,22 @@ class Search extends Component {
           if(response.status === 200){
             console.log('this is the get response',response.data);
             resolve(response.data);
-          } else {
-            console.log('Bad request sent')
-            reject([])
+          } else if(response.status === 404){
+            console.log('No matches were found');
+            const err = {
+              code: 404,
+              message: 'No matches found'
+            }
+            reject(err);
           }
         })
       } else {
         console.log('Invalid input')
-        reject([]);
+        const err = {
+          code: 402,
+          message: 'Invalid input'
+        }
+        reject(err);
       }
       // resolve(PLACES);
     });
