@@ -19,7 +19,7 @@ class Results extends Component {
     } else if(this.props.results.length) {
       const places = this.props.results;
       return (
-        <div className="">
+        <div className="justify-content-center">
           {ResultTiles(places)}
         </div>
       )
@@ -40,6 +40,8 @@ const ResultTiles = (results) => {
         <ResultTile
         name={result.name}
         address={result.vicinity}
+        distanceOne={result.dist_one}
+        distanceTwo={result.dist_two}
         />
       );
     });

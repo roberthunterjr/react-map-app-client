@@ -52,13 +52,9 @@ class App extends Component {
             updatePlacesFn={this.updatePlaces.bind(this)}
             appErrorFn={this.handleError.bind(this)}/>
           </div>
-          <div className="row">
-            <div className="col-sm-5">
-              <p className="App-intro">
-                This area is reserved for the map
-              </p>
-            </div>
-            <div className="col-sm-7 bg-faded">
+          <div className="row justify-content-center">
+
+            <div className="col-sm-12 bg-faded">
               <div>
                 <Results
                 results={this.state.places}

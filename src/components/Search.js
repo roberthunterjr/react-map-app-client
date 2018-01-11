@@ -6,18 +6,22 @@ class Search extends Component {
     super(props);
     this.state = {
       addressOne: '',
-      addressTwo: ''
+      addressTwo: '',
+      searchText: 'Search'
     }
   }
 
   clickHandle(e){
     e.preventDefault;
     //call getPlaces then updatePlaces
+    this.setState({searchText: 'Loading'});
     this.getPlaces()
     .then((places) => {
       this.props.updatePlacesFn(places);
+      this.setState({searchText: 'Search'});
     },(err) => {
       this.props.appErrorFn(err.code, err.message);
+      this.setState({searchText: 'Search'});
     })
   }
 
@@ -83,7 +87,7 @@ class Search extends Component {
             type="button"
             className="btn btn-primary col-md-2"
             onClick={this.clickHandle.bind(this)}>
-            Search
+            {this.state.searchText}
           </button>
         </form>
       </div>
